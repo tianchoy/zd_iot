@@ -12,6 +12,7 @@ class LoginPage extends GetView<LoginPageController> {
       appBar: AppBar(
         title: const Text('登录', style: TextStyle(fontSize: 18)),
         backgroundColor: Colors.white,
+        centerTitle: true,
         actions: [
           TextButton(
             onPressed: () {

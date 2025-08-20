@@ -17,7 +17,7 @@ class TopBar extends StatelessWidget implements PreferredSizeWidget {
         centerTitle: true,
         title: Text(
           controller.topBarTitle.value,
-          style: TextStyle(fontSize: 15.0),
+          style: TextStyle(fontSize: 18.0),
         ),
         actions: controller.topBarActions,
         automaticallyImplyLeading: controller.topBarShowBack.value,

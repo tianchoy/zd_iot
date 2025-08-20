@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../pages/home/home_page.dart';
@@ -23,11 +24,11 @@ extension AppTabExtension on AppTab {
   IconData get icon {
     switch (this) {
       case AppTab.home:
-        return Icons.home;
+        return CupertinoIcons.home;
       case AppTab.message:
-        return Icons.textsms;
+        return CupertinoIcons.mail;
       case AppTab.profile:
-        return Icons.person;
+        return CupertinoIcons.person;
     }
   }
 
@@ -67,21 +68,30 @@ class TabBarController extends GetxController {
       case AppTab.home:
         topBarTitle.value = '首页';
         topBarActions.value = [
-          IconButton(icon: const Icon(Icons.add), onPressed: _onAddDevice),
+          IconButton(
+            icon: const Icon(CupertinoIcons.plus_circled, size: 22.0),
+            onPressed: _onAddDevice,
+          ),
         ];
         topBarShowBack.value = false;
         break;
       case AppTab.message:
         topBarTitle.value = '消息中心';
         topBarActions.value = [
-          IconButton(icon: const Icon(Icons.filter_list), onPressed: _onFilter),
+          IconButton(
+            icon: const Icon(CupertinoIcons.mail, size: 22.0),
+            onPressed: _onFilter,
+          ),
         ];
         topBarShowBack.value = false;
         break;
       case AppTab.profile:
         topBarTitle.value = '个人中心';
         topBarActions.value = [
-          IconButton(icon: const Icon(Icons.settings), onPressed: _onSettings),
+          IconButton(
+            icon: const Icon(CupertinoIcons.settings, size: 22.0),
+            onPressed: _onSettings,
+          ),
         ];
         topBarShowBack.value = false;
         break;

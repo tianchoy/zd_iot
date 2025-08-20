@@ -13,6 +13,7 @@ class TabBar extends GetView<TabBarController> {
       body: Obx(() => controller.currentTab.value.page), // 现在可以使用 .page 了
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
+          backgroundColor: Colors.white,
           items: AppTab.values.map((tab) {
             final isSelected = tab == controller.currentTab.value;
             return BottomNavigationBarItem(

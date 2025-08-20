@@ -8,8 +8,6 @@ class ProfilePage extends GetView<ProfilePageController> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Profile'),
-    );
+    return Container(child: Text('Profile'));
   }
 }

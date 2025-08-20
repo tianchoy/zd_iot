@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../components/controllers/tab_bar_controller.dart';
 import 'package:get/get.dart';
-import '../pages/home_page.dart';
-import '../pages/message_page.dart';
-import '../pages/profile_page.dart';
+import '../pages/home/home_page.dart';
+import '../pages/message/message_page.dart';
+import '../pages/profile/profile_page.dart';
 
 enum AppTab { home, message, profile }
 

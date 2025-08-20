@@ -1,46 +1,7 @@
 import 'package:flutter/material.dart';
-import '../components/controllers/tab_bar_controller.dart';
 import 'package:get/get.dart';
-import '../pages/home/home_page.dart';
-import '../pages/message/message_page.dart';
-import '../pages/profile/profile_page.dart';
-
-enum AppTab { home, message, profile }
-
-extension AppTabExtension on AppTab {
-  String get label {
-    switch (this) {
-      case AppTab.home:
-        return '首页';
-      case AppTab.message:
-        return '消息';
-      case AppTab.profile:
-        return '我';
-    }
-  }
-
-  IconData get icon {
-    switch (this) {
-      case AppTab.home:
-        return Icons.home;
-      case AppTab.message:
-        return Icons.textsms;
-      case AppTab.profile:
-        return Icons.person;
-    }
-  }
-
-  Widget get page {
-    switch (this) {
-      case AppTab.home:
-        return const HomePage();
-      case AppTab.message:
-        return const MessagePage();
-      case AppTab.profile:
-        return const ProfilePage();
-    }
-  }
-}
+import '../components/controllers/tab_bar_controller.dart';
+import 'top_bar.dart';
 
 class TabBar extends GetView<TabBarController> {
   const TabBar({super.key});
@@ -48,18 +9,18 @@ class TabBar extends GetView<TabBarController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Obx(() => controller.currentTab.value.page),
+      appBar: const TopBar(),
+      body: Obx(() => controller.currentTab.value.page), // 现在可以使用 .page 了
       bottomNavigationBar: Obx(
         () => BottomNavigationBar(
           items: AppTab.values.map((tab) {
             final isSelected = tab == controller.currentTab.value;
             return BottomNavigationBarItem(
               icon: Icon(
-                tab.icon,
-                color: isSelected ? Colors.blue : Colors.grey, // 选中项蓝色，未选中项灰色
+                tab.icon, // 现在可以使用 .icon 了
+                color: isSelected ? Colors.blue : Colors.grey,
               ),
-              label: tab.label,
+              label: tab.label, // 现在可以使用 .label 了
             );
           }).toList(),
           selectedItemColor: Colors.blue,
@@ -68,10 +29,10 @@ class TabBar extends GetView<TabBarController> {
           type: BottomNavigationBarType.fixed,
           currentIndex: controller.currentTab.value.index,
           onTap: (index) {
-            controller.currentTab.value = AppTab.values[index];
+            controller.changeTab(AppTab.values[index]);
           },
-          showSelectedLabels: true, // 确保选中标签显示
-          showUnselectedLabels: true, // 确保未选中标签也显示
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
         ),
       ),
     );

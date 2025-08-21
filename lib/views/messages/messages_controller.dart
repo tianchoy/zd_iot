@@ -15,7 +15,7 @@ class MessagesController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: tabs.length, vsync: this);
-    loadMessages();
+    // loadMessages();
   }
 
   @override
@@ -24,18 +24,18 @@ class MessagesController extends GetxController
     super.onClose();
   }
 
-  Future<void> loadMessages() async {
-    try {
-      isLoading.value = true;
-      messages.value = await _repository.fetchMessages();
-    } catch (e) {
-      Get.snackbar('Error', 'Failed to load messages');
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  // Future<void> loadMessages() async {
+  //   try {
+  //     isLoading.value = true;
+  //     messages.value = await _repository.fetchMessages();
+  //   } catch (e) {
+  //     Get.snackbar('Error', 'Failed to load messages');
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
   void refreshMessages() {
-    loadMessages();
+    // loadMessages();
   }
 }

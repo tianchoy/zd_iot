@@ -5,7 +5,7 @@ import '../views/messages/messages_binding.dart';
 import '../views/messages/messages_view.dart';
 import '../views/profile/profile_binding.dart';
 import '../views/profile/profile_view.dart';
-import 'router_constance.dart';
+import 'router_instance.dart';
 
 class AppRouter {
   static final routes = [

@@ -15,7 +15,7 @@ class ProfileController extends GetxController
   void onInit() {
     super.onInit();
     tabController = TabController(length: tabs.length, vsync: this);
-    loadProfile();
+    // loadProfile();
   }
 
   @override
@@ -24,18 +24,18 @@ class ProfileController extends GetxController
     super.onClose();
   }
 
-  Future<void> loadProfile() async {
-    try {
-      isLoading.value = true;
-      profile.value = await _repository.fetchProfile();
-    } catch (e) {
-      Get.snackbar('Error', 'Failed to load profile');
-    } finally {
-      isLoading.value = false;
-    }
-  }
+  // Future<void> loadProfile() async {
+  //   try {
+  //     isLoading.value = true;
+  //     profile.value = await _repository.fetchProfile();
+  //   } catch (e) {
+  //     Get.snackbar('Error', 'Failed to load profile');
+  //   } finally {
+  //     isLoading.value = false;
+  //   }
+  // }
 
   void refreshProfile() {
-    loadProfile();
+    // loadProfile();
   }
 }

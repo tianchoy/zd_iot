@@ -9,7 +9,7 @@ class MessagesView extends GetView<MessagesController> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      title: 'messages',
+      title: '消息',
       body: Column(children: [Text('Message')]),
     );
   }

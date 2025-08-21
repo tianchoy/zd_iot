@@ -1,5 +1,6 @@
 // shared/widgets/bottom_nav_bar.dart
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
   final int currentIndex;
@@ -24,13 +25,6 @@ class CustomBottomNavBar extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 8,
-            offset: const Offset(0, -2),
-          ),
-        ],
       ),
       child: ClipRRect(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
@@ -52,9 +46,9 @@ class CustomBottomNavBar extends StatelessWidget {
 
   List<BottomNavigationBarItem> _buildNavItems() {
     return const [
-      BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-      BottomNavigationBarItem(icon: Icon(Icons.message), label: 'Messages'),
-      BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.home), label: '首页'),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.mail), label: '消息'),
+      BottomNavigationBarItem(icon: Icon(CupertinoIcons.person), label: '我'),
     ];
   }
 }

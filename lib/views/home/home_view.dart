@@ -9,10 +9,17 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
-      title: 'home',
-      showBackButton: true,
-      body: Column(children: [Text('HomeView')]),
+      title: '首页',
+      showBackButton: false,
+      body: Column(
+        children: [
+          Text('HomeView'),
+          // IconButton(
+          //   icon: Icon(Icons.refresh),
+          //   // onPressed: controller.refreshData,
+          // ),
+        ],
+      ),
     );
-    ;
   }
 }

@@ -1,6 +1,6 @@
 // shared/services/navigation_service.dart
 import 'package:get/get.dart';
-import '../../app/router_constance.dart';
+import '../../app/router_instance.dart';
 
 class NavigationService {
   static const int homeIndex = 0;

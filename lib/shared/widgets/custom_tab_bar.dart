@@ -33,13 +33,6 @@ class CustomTabBar extends StatelessWidget implements PreferredSizeWidget {
     return Container(
       decoration: BoxDecoration(
         color: backgroundColor ?? Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
-          ),
-        ],
         borderRadius: const BorderRadius.vertical(bottom: Radius.circular(16)),
       ),
       child: TabBar(

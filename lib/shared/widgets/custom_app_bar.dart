@@ -6,7 +6,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
   final bool showBackButton;
   final Color backgroundColor;
-  final double elevation;
   final bool centerTitle;
 
   const CustomAppBar({
@@ -15,7 +14,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.showBackButton = false,
     this.backgroundColor = Colors.white,
-    this.elevation = 4.0,
     this.centerTitle = true,
   });
 
@@ -24,11 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         title,
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 20,
-          color: Colors.black87,
-        ),
+        style: const TextStyle(fontSize: 18, color: Colors.black87),
       ),
       centerTitle: centerTitle,
       automaticallyImplyLeading: showBackButton,
@@ -40,17 +34,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           : null,
       actions: actions,
       backgroundColor: backgroundColor,
-      elevation: elevation,
-      shadowColor: Colors.black.withAlpha(10),
       iconTheme: const IconThemeData(color: Colors.black87),
-      titleTextStyle: const TextStyle(
-        color: Colors.black87,
-        fontSize: 20,
-        fontWeight: FontWeight.bold,
-      ),
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(bottom: Radius.circular(16)),
-      ),
+      titleTextStyle: const TextStyle(color: Colors.black87, fontSize: 18),
     );
   }
 

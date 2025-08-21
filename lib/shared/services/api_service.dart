@@ -1,21 +1,43 @@
+import 'package:dio/dio.dart';
+import 'api_http.dart';
+
 class ApiService {
-  // 模拟API调用
-  Future<String> fetchHomeData() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return 'Home Data Loaded';
+  static const String _baseUrl = 'https://jsonplaceholder.typicode.com';
+  final HttpService _httpService = HttpService(baseUrl: _baseUrl);
+
+  // 用户相关API
+  Future<Response> login(String email, String password) async {
+    final data = {'email': email, 'password': password};
+    return await _httpService.post('/auth/login', data: data);
   }
 
-  Future<List<String>> fetchMessages() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return ['Message 1', 'Message 2', 'Message 3'];
+  Future<Response> register(String email, String password) async {
+    final data = {'email': email, 'password': password};
+    return await _httpService.post('/auth/register', data: data);
   }
 
-  Future<Map<String, dynamic>> fetchProfile() async {
-    await Future.delayed(const Duration(seconds: 1));
-    return {
-      'name': 'John Doe',
-      'email': 'john.doe@example.com',
-      'joined': '2023-01-01',
-    };
+  // 数据相关API
+  Future<Response> fetchHomeData() async {
+    return await _httpService.get('/posts');
+  }
+
+  Future<Response> updateUserProfile(Map<String, dynamic> data) async {
+    return await _httpService.put('/users/me', data: data);
+  }
+
+  Future<Response> uploadFile(
+    String filePath, {
+    required ProgressCallback onSendProgress,
+  }) async {
+    final formData = FormData.fromMap({
+      'file': await MultipartFile.fromFile(filePath),
+    });
+
+    return await _httpService.post(
+      '/upload',
+      data: formData,
+      options: Options(contentType: Headers.multipartFormDataContentType),
+      onSendProgress: onSendProgress,
+    );
   }
 }

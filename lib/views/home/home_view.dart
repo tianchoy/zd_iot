@@ -24,10 +24,10 @@ class HomeView extends GetView<HomeController> {
             },
             child: Text('登陆', style: TextStyle(color: Colors.white)),
           ),
-          // IconButton(
-          //   icon: Icon(Icons.refresh),
-          //   // onPressed: controller.refreshData,
-          // ),
+          IconButton(
+            icon: Icon(Icons.refresh),
+            onPressed: controller.refreshData,
+          ),
         ],
       ),
     );

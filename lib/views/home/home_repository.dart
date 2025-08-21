@@ -1,3 +1,5 @@
+import 'package:logger/logger.dart';
+
 import '../../shared/services/api_service.dart';
 
 class HomeRepository {
@@ -12,7 +14,7 @@ class HomeRepository {
         throw Exception('Failed to load data: ${response.statusCode}');
       }
     } catch (e) {
-      print('Repository Error: $e');
+      Logger().d(e);
       rethrow;
     }
   }

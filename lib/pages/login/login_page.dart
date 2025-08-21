@@ -22,7 +22,7 @@ class LoginPage extends GetView<LoginPageController> {
         ],
         showBackButton: true,
         onBackPressed: () {
-          controller.signUp();
+          Get.back();
         },
       ),
       body: Container(

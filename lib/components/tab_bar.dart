@@ -1,3 +1,4 @@
+// TabBar.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../components/controllers/tab_bar_controller.dart';
@@ -8,20 +9,27 @@ class TabBar extends GetView<TabBarController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const TopBar(),
-      body: Obx(() => controller.currentTab.value.page), // 现在可以使用 .page 了
-      bottomNavigationBar: Obx(
-        () => BottomNavigationBar(
+    return Obx(
+      () => Scaffold(
+        appBar: TopBar(
+          title: controller.topBarTitle.value,
+          actions: controller.topBarActions.value,
+          showBackButton: controller.topBarShowBack.value,
+          onBackPressed: () {
+            Get.back();
+          },
+        ),
+        body: controller.currentTab.value.page,
+        bottomNavigationBar: BottomNavigationBar(
           backgroundColor: Colors.white,
           items: AppTab.values.map((tab) {
             final isSelected = tab == controller.currentTab.value;
             return BottomNavigationBarItem(
               icon: Icon(
-                tab.icon, // 现在可以使用 .icon 了
+                tab.icon,
                 color: isSelected ? Colors.blue : Colors.grey,
               ),
-              label: tab.label, // 现在可以使用 .label 了
+              label: tab.label,
             );
           }).toList(),
           selectedItemColor: Colors.blue,

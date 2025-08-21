@@ -1,31 +1,44 @@
+// TopBar.dart
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../components/controllers/tab_bar_controller.dart';
+import 'package:flutter/cupertino.dart';
 
 class TopBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   final Size preferredSize = const Size.fromHeight(kToolbarHeight);
 
-  const TopBar({super.key});
+  final String title;
+  final List<Widget> actions;
+  final bool showBackButton;
+  final VoidCallback? onBackPressed;
+
+  const TopBar({
+    super.key,
+    required this.title,
+    required this.actions,
+    this.showBackButton = false,
+    this.onBackPressed,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final TabBarController controller = Get.find();
-
-    return Obx(
-      () => AppBar(
-        centerTitle: true,
-        title: Text(
-          controller.topBarTitle.value,
-          style: TextStyle(fontSize: 18.0),
-        ),
-        actions: controller.topBarActions,
-        automaticallyImplyLeading: controller.topBarShowBack.value,
-        // 可以根据需要添加其他 AppBar 属性
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-        elevation: 0,
-      ),
+    return AppBar(
+      centerTitle: true,
+      title: Text(title, style: const TextStyle(fontSize: 18.0)),
+      actions: actions,
+      automaticallyImplyLeading: showBackButton,
+      leading: showBackButton
+          ? IconButton(
+              icon: const Icon(CupertinoIcons.back),
+              onPressed:
+                  onBackPressed ??
+                  () {
+                    Navigator.of(context).pop();
+                  },
+            )
+          : null,
+      backgroundColor: Colors.white,
+      foregroundColor: Colors.black,
+      elevation: 0,
     );
   }
 }

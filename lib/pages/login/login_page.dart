@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../components/top_bar.dart';
 import 'controllers/login_page_controller.dart';
 
 class LoginPage extends GetView<LoginPageController> {
@@ -9,20 +10,20 @@ class LoginPage extends GetView<LoginPageController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('登录', style: TextStyle(fontSize: 18)),
-        backgroundColor: Colors.white,
+      appBar: TopBar(
+        title: '登录',
         actions: [
-          TextButton(
+          IconButton(
+            icon: const Icon(Icons.help_outline),
             onPressed: () {
-              controller.signUp();
+              Get.snackbar('帮助', '登录帮助信息');
             },
-            child: const Text(
-              '注册',
-              style: TextStyle(color: Colors.blue, fontSize: 16),
-            ),
           ),
         ],
+        showBackButton: true,
+        onBackPressed: () {
+          controller.signUp();
+        },
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 40),

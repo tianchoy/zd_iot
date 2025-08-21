@@ -4,6 +4,8 @@ import 'package:zd_iot/shared/widgets/main_scaffold.dart';
 import 'login_controller.dart';
 
 class LoginView extends GetView<LoginController> {
+  const LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MainScaffold(
@@ -17,7 +19,7 @@ class LoginView extends GetView<LoginController> {
           child: Text('注册'),
         ),
       ],
-      body: Container(child: Column(children: [Text('Login View')])),
+      body: Column(children: [Text('Login View')]),
     );
   }
 }

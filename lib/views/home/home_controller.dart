@@ -1,6 +1,7 @@
 // home_controller.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:logger/logger.dart';
 import 'home_repository.dart';
 
 class HomeController extends GetxController
@@ -31,7 +32,7 @@ class HomeController extends GetxController
       isLoading.value = true;
       error.value = '';
 
-      print('开始加载数据...');
+      Logger().d('开始加载数据...');
       final responseData = await _repository.fetchHomeData();
       if (responseData is Map || responseData is List) {
         data.value = responseData.toString();
@@ -39,18 +40,18 @@ class HomeController extends GetxController
         data.value = responseData?.toString() ?? 'No data';
       }
 
-      print('处理后的数据: ${data.value}');
+      Logger().d('处理后的数据: ${data.value}');
     } catch (e) {
       error.value = e.toString();
-      print('Controller 错误: $e');
+      Logger().d('Controller 错误: $e');
       Get.snackbar(
         '错误',
         '加载数据失败: ${e.toString()}',
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: SnackPosition.TOP,
       );
     } finally {
       isLoading.value = false;
-      print('加载完成，isLoading: ${isLoading.value}');
+      Logger().d('加载完成,isLoading: ${isLoading.value}');
     }
   }
 

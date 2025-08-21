@@ -15,7 +15,7 @@ class App extends StatelessWidget {
         fontFamily: 'PingFang SC',
         brightness: Brightness.light,
       ),
-      initialRoute: '/',
+      initialRoute: AppRouter.routes[0].name,
       getPages: AppRouter.routes,
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.fadeIn,

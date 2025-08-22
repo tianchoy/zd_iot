@@ -1,6 +1,7 @@
 // home_controller.dart
 import 'package:get/get.dart';
 import 'package:logger/logger.dart';
+import 'package:zd_plugin/zd_plugin.dart';
 import 'home_repository.dart';
 
 class HomeController extends GetxController
@@ -13,7 +14,14 @@ class HomeController extends GetxController
   @override
   void onInit() {
     super.onInit();
-    loadData();
+    // loadData();
+    getVersion();
+  }
+
+  Future<void> getVersion() async {
+    final ZdPlugin _plugin = ZdPlugin();
+    final String? version = await _plugin.getPlatformVersion();
+    Logger().d('version: $version');
   }
 
   Future<void> loadData() async {

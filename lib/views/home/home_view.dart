@@ -26,7 +26,7 @@ class HomeView extends GetView<HomeController> {
           ),
           IconButton(
             icon: Icon(Icons.refresh),
-            onPressed: controller.refreshData,
+            onPressed: controller.getVersion,
           ),
         ],
       ),

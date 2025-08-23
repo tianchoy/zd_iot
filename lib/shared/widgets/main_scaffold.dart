@@ -10,6 +10,7 @@ class MainScaffold extends StatelessWidget {
   final bool showBackButton;
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
+  final bool showBottomNavBar;
 
   const MainScaffold({
     super.key,
@@ -18,6 +19,7 @@ class MainScaffold extends StatelessWidget {
     this.showBackButton = false,
     this.actions,
     this.bottom,
+    this.showBottomNavBar = true,
   });
 
   @override
@@ -29,10 +31,12 @@ class MainScaffold extends StatelessWidget {
         actions: actions,
       ),
       body: body,
-      bottomNavigationBar: CustomBottomNavBar(
-        currentIndex: NavigationService.getCurrentIndex(),
-        onTap: NavigationService.navigateTo,
-      ),
+      bottomNavigationBar: showBottomNavBar
+          ? CustomBottomNavBar(
+              currentIndex: NavigationService.getCurrentIndex(),
+              onTap: NavigationService.navigateTo,
+            )
+          : null,
       bottomSheet: bottom,
     );
   }

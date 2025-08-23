@@ -11,6 +11,7 @@ class LoginView extends GetView<LoginController> {
     return MainScaffold(
       title: '登陆',
       showBackButton: true,
+      showBottomNavBar: false,
       actions: [
         TextButton(
           onPressed: () {

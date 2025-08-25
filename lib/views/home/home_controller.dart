@@ -16,19 +16,12 @@ class HomeController extends GetxController
     super.onInit();
     // loadData();
     getVersion();
-    getBattery();
   }
 
   Future<void> getVersion() async {
     final ZdPlugin _plugin = ZdPlugin();
     final String? version = await _plugin.getPlatformVersion();
     Logger().d('version: $version');
-  }
-
-  Future<void> getBattery() async {
-    final ZdPlugin _plugin = ZdPlugin();
-    final String? battery = await _plugin.getPluginVersion();
-    Logger().d('battery: $battery');
   }
 
   Future<void> loadData() async {

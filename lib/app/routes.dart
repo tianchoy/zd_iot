@@ -31,7 +31,6 @@ class AppRouter {
       page: () => LoginView(),
       binding: LoginBindings(),
       transition: Transition.cupertino,
-      transitionDuration: const Duration(milliseconds: 300),
     ),
   ];
 }

@@ -26,6 +26,15 @@
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>我们需要访问本地网络来发现和连接您的智能设备</string>
+
+	<key>NSBonjourServices</key>
+	<array>
+		<!-- 根据需要添加你App实际使用的服务类型 -->
+		<string>_http._tcp</string>
+		<string>_https._tcp</string>
+	</array>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UISupportedInterfaceOrientations</key>

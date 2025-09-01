@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zd_iot/shared/widgets/main_scaffold.dart';
@@ -28,7 +29,43 @@ class LoginView extends GetView<LoginController> {
 
   Widget _buildBody(BuildContext context) {
     return BuildBody(
-      child: BuildContainer(child: Column(children: [Text('Login View')])),
+      child: Column(
+        children: [
+          BuildContainer(
+            child: Column(
+              children: [
+                Obx(
+                  () => CupertinoTextField(
+                    // 将可观察变量的值赋给 controller
+                    controller: TextEditingController(
+                      text: controller.username.value,
+                    ),
+                    placeholder: '请输入用户名',
+                    // 当用户输入时，更新可观察变量的值
+                    onChanged: (value) => controller.username.value = value,
+                  ),
+                ),
+                Obx(
+                  () => CupertinoTextField(
+                    controller: TextEditingController(
+                      text: controller.password.value,
+                    ),
+                    placeholder: '请输入密码',
+                    obscureText: true,
+                    onChanged: (value) => controller.password.value = value,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          CupertinoButton(
+            onPressed: () {
+              controller.Login();
+            },
+            child: Text('登录'),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -41,17 +41,34 @@ class LoginView extends GetView<LoginController> {
                       text: controller.username.value,
                     ),
                     placeholder: '请输入用户名',
+                    prefix: Icon(Icons.person),
+                    suffix: IconButton(
+                      icon: Icon(Icons.clear),
+                      onPressed: () {
+                        controller.usernameController.clear();
+                        controller.username.value = '';
+                      },
+                    ),
                     // 当用户输入时，更新可观察变量的值
                     onChanged: (value) => controller.username.value = value,
                   ),
                 ),
+                const Divider(height: 20),
                 Obx(
                   () => CupertinoTextField(
                     controller: TextEditingController(
                       text: controller.password.value,
                     ),
                     placeholder: '请输入密码',
-                    obscureText: true,
+                    prefix: Icon(Icons.lock),
+                    suffix: IconButton(
+                      icon: Icon(Icons.remove_red_eye),
+                      onPressed: () {
+                        controller.showPassword.value =
+                            !controller.showPassword.value;
+                      },
+                    ),
+                    obscureText: controller.showPassword.value,
                     onChanged: (value) => controller.password.value = value,
                   ),
                 ),
